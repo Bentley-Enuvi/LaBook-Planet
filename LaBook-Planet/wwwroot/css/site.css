@@ -1,0 +1,182 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/*My CSS Style*/
+
+/*Register Section*/
+.reg-panel {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+    .reg-panel h2 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: border-color 0.3s ease-in-out;
+}
+
+    .form-control:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+.form-group label {
+    position: absolute;
+    top: -18px;
+    left: 10px;
+    background-color: #f9f9f9;
+    padding: 2px 6px;
+    font-size: 14px;
+    color: #555;
+}
+
+.form-group .btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    .form-group .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+span[data-valmsg-for] {
+    display: block;
+    font-size: 12px;
+    color: red;
+    text-align: left;
+    margin-top: 4px;
+}
+
+@media (max-width: 576px) {
+    .reg-panel {
+        padding: 15px;
+    }
+}
+
+
+/*Login Section*/
+.login-panel {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+    .login-panel h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+.input-control {
+    margin-bottom: 15px;
+}
+
+    .input-control input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+
+span[data-valmsg-for] {
+    display: block;
+    font-size: 12px;
+    color: red;
+}
+
+
+/*Thumb-nail Section*/
+.thumbnail-holder{
+    position: relative;
+    width: 100%;
+}
+
+.thumbnail-loggedin-user{
+    position: absolute;
+    right: 0px;
+    width: 350px;
+    display: flex;
+
+}
+
+.thumb-image{
+    width:40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+/*Access Denied*/
+.center-box{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+/*Forgot/Reset password section*/
+#input-control-forgot-pass{
+    display: flex;
+    justify-content: space-between;
+
+}
