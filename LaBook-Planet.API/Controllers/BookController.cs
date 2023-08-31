@@ -18,10 +18,12 @@ namespace LaBook_Planet.API.Controllers
     {
         private readonly IBookRepository _bookRepo;
         private readonly IMapper _mapper;
-        public BookController(IBookRepository bookRepo, IMapper mapper)
+        private readonly LaBookContextApi _context;
+        public BookController(IBookRepository bookRepo, IMapper mapper, LaBookContextApi context)
         {
             _bookRepo = bookRepo;
             _mapper = mapper;
+            _context = context;
         }
 
 

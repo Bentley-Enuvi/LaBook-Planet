@@ -6,8 +6,7 @@ namespace LaBook_Planet.API.Library.Domain.Models
 {
     public class Book : IEntity, IAuditable
     {
-        public string Id { get; set; }
-        public string BookId { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Title { get; set; } = "";
         public string Description { get; set; } = "";
         public string Author { get; set; } = "";
@@ -20,7 +19,7 @@ namespace LaBook_Planet.API.Library.Domain.Models
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        public Genre Genre { get; set; }
+        public Genre Genre { get; set; } //navigation property
         public ICollection<Review> Reviews { get; set; }
         public int AvailableCopies { get; internal set; }
     }

@@ -16,12 +16,14 @@ namespace LaBook_Planet.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IAccountService _accountService;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IEmailService _emailService;
 
-        public AccountController(SignInManager<AppUser> signInManager, IAccountService accountService, UserManager<AppUser> userManager)
+        public AccountController(SignInManager<AppUser> signInManager, IAccountService accountService, UserManager<AppUser> userManager, IEmailService emailService)
         {
             _signInManager = signInManager;
             _accountService = accountService;
             _userManager = userManager;
+            _emailService = emailService;
         }
 
         [HttpGet]
@@ -119,13 +121,29 @@ namespace LaBook_Planet.Controllers
 
 
         [HttpPost]
-        public IActionResult ForgotPassword(ForgotPasswordViewModel model)
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
             if (_accountService.IsLoggedInAsync(User))
-                return RedirectToAction("Indec", "Home");
+                return RedirectToAction("Index", "Home");
             if (ModelState.IsValid)
             {
-                
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    var link = Url.Action("ResetPassword", "Account", new { token });
+
+                    if(await _emailService.SendAsync(model.Email, "Reset Password link", link))
+                    {
+                        ViewBag.Err = "A reset password link has been sent to the email provided. Please go to your inbox and click on the link t reset your password";
+
+                    }
+                    else
+                    {
+                        ViewBag.Err = "Failed to send a reset password link. Please try again";
+                    }
+                }
+
             }
             return View(model);
         }
