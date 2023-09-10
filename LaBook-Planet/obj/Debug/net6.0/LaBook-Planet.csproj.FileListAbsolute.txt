@@ -120,3 +120,4 @@ C:\Users\DELL\source\repos\LaBook-Planet\LaBook-Planet\bin\Debug\net6.0\Mailjet.
 C:\Users\DELL\source\repos\LaBook-Planet\LaBook-Planet\bin\Debug\net6.0\MailKit.dll
 C:\Users\DELL\source\repos\LaBook-Planet\LaBook-Planet\bin\Debug\net6.0\MimeKit.dll
 C:\Users\DELL\source\repos\LaBook-Planet\LaBook-Planet\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+C:\Users\DELL\source\repos\LaBook-Planet\LaBook-Planet\bin\Debug\net6.0\CloudinaryDotNet.dll

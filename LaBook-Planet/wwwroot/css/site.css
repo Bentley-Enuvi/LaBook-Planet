@@ -30,10 +30,10 @@ body {
     text-align: center;
 }
 
-    .reg-panel h2 {
-        color: #333;
-        margin-bottom: 20px;
-    }
+.reg-panel h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
 
 .form-group {
     position: relative;
@@ -49,10 +49,10 @@ body {
     transition: border-color 0.3s ease-in-out;
 }
 
-    .form-control:focus {
-        border-color: #007bff;
-        outline: none;
-    }
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
 
 .form-group label {
     position: absolute;
@@ -74,9 +74,9 @@ body {
     transition: background-color 0.3s ease-in-out;
 }
 
-    .form-group .btn-primary:hover {
-        background-color: #0056b3;
-    }
+.form-group .btn-primary:hover {
+    background-color: #0056b3;
+}
 
 span[data-valmsg-for] {
     display: block;
@@ -105,21 +105,21 @@ span[data-valmsg-for] {
     text-align: center;
 }
 
-    .login-panel h2 {
-        margin-bottom: 20px;
-        color: #333;
-    }
+.login-panel h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
 
 .input-control {
     margin-bottom: 15px;
 }
 
-    .input-control input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
+.input-control input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
 
 .button {
     display: inline-block;
@@ -131,9 +131,9 @@ span[data-valmsg-for] {
     cursor: pointer;
 }
 
-    .button:hover {
-        background-color: #0056b3;
-    }
+.button:hover {
+    background-color: #0056b3;
+}
 
 span[data-valmsg-for] {
     display: block;
@@ -178,5 +178,17 @@ span[data-valmsg-for] {
 #input-control-forgot-pass{
     display: flex;
     justify-content: space-between;
+}
 
+#input-control-forgot-pass div{
+    border: 1px solid grey;
+}
+
+.main-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 900px;
+    margin: 40px auto;
+    margin-top: 20px;
+    border-radius: 10px;
 }

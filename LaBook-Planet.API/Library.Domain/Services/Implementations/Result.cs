@@ -1,4 +1,6 @@
-﻿using LaBook_Planet.API.Library.Domain.Services.Interfaces;
+﻿using BookAPI.DTOs;
+using LaBook_Planet.API.Library.Domain.Services.Interfaces;
+using LaBook_Planet.API.LibraryCore.API.DTOs;
 using IResult =LaBook_Planet.API.Library.Domain.Services.Interfaces.IResult;
 
 namespace LaBook_Planet.API.Library.Domain.Services.Implementations
@@ -15,7 +17,7 @@ namespace LaBook_Planet.API.Library.Domain.Services.Implementations
         {
             return new Result<T>
             {
-                IsSuccessful = false, 
+                IsSuccessful = false,
                 Errors = errors
             };
         }
@@ -28,6 +30,11 @@ namespace LaBook_Planet.API.Library.Domain.Services.Implementations
                 IsSuccessful = true,
                 Data = data
             };
+        }
+
+        internal static Result<UpdateBookDto> Success(BookDetailsDto updatedBook)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -5,9 +5,9 @@ using Microsoft.VisualStudio.Services.Users;
 
 namespace Library.Core.Utilities;
 
-public class MappingProfile : Profile
+public class LaBookProfile : Profile
 {
-    public MappingProfile()
+    public LaBookProfile()
     {
         CreateMap<Book, AddBookDto>()
             .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title + " " + src.Author));

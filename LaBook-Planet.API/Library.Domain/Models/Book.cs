@@ -14,13 +14,16 @@ namespace LaBook_Planet.API.Library.Domain.Models
         public string Language { get; set; } = "";
         public int RatingValue { get; set; }
         public string ISBN { get; set; } = "";
+        public int Price { get; set; }
+        public int AvailableCopies { get; set; }
         public DateTime DatePublished { get; set; }
         public int NumOfPages { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public string Image { get; set; }
 
         public Genre Genre { get; set; } //navigation property
         public ICollection<Review> Reviews { get; set; }
-        public int AvailableCopies { get; internal set; }
+        
     }
 }

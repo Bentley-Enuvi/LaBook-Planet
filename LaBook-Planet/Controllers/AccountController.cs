@@ -116,6 +116,8 @@ namespace LaBook_Planet.Controllers
         [HttpGet]
         public IActionResult ForgotPassword()
         {
+            if (_accountService.IsLoggedInAsync(User))
+                return RedirectToAction("Index", "Home");
             return View();
         }
 
