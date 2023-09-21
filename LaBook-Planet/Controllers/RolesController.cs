@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LaBook_Planet.API.Controllers
 {
-    [Route("[controller")]
+    [Route("[controller]")]
     public class RolesController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;

@@ -17,44 +17,35 @@ namespace LaBook_Planet.Library.Core.Services.Implementations
             _userManager = userManager;
         }
 
-        public async Task<IdentityResult> RegisterAsync(RegisterViewModel model)
+        public async Task<bool> LoginAsync(AppUser user, string password)
         {
-            var newUser = new AppUser
+            var loginResult = await _signInManager.PasswordSignInAsync(user, password, false, false);
+            if (loginResult.Succeeded)
             {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                UserName = model.Email,
-                Email = model.Email
-            };
-
-            var result = await _userManager.CreateAsync(newUser, model.Password);
-            return result;
+                return true;
+            }
+            return false;
         }
 
 
 
-        public async Task<bool> LoginAsync(AppUser user, string password)
+        public async Task LogoutAsync()
         {
-            var loginResult = await _signInManager.PasswordSignInAsync(user, password, false, false);
-            if(loginResult.Succeeded)
-            
-                return true;
-
-             return false;
-            
+            await _signInManager.SignOutAsync();
         }
 
 
         public bool IsLoggedInAsync(ClaimsPrincipal user)
         {
-            if (_signInManager.IsSignedIn(user)) { return true;}
+            if (_signInManager.IsSignedIn(user))
+                return true;
             return false;
         }
 
-        
-        public async Task LogoutAsync()
+        public async Task<IdentityResult> RegisterAsync(AppUser user, string password)
         {
-            await _signInManager.SignOutAsync();
+            var result = await _userManager.CreateAsync(user, password);
+            return result;
         }
     }
 }

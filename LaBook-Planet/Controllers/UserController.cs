@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LaBook_Planet.Controllers
 {
-    [Route("[controller")]
+    [Route("[controller]")]
     public class UserController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

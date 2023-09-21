@@ -3,7 +3,6 @@ using LaBook_Planet.API.Library.Domain.Models;
 using LaBook_Planet.API.Library.Domain.Services.Implementations;
 using LaBook_Planet.API.Library.Domain.Services.Interfaces;
 using LaBook_Planet.API.LibraryCore.API.Repositories;
-//using LaBook_Planet.API.LibraryCore.API.Repositories;
 using Library.API.Extensions;
 using Library.API.Middlewares;
 using Library.Core.Interfaces.Services;
@@ -91,19 +90,9 @@ builder.Services.AddAutoMapper(typeof(LaBookProfile));
 
 
 
-
-
-
-
-
-
 var app = builder.Build();
 
-
-
 builder.Logging.AddConsole();
-
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -112,21 +101,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
-
 app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseRouting();
-
 
 
 //app.UseAuthentication();
 app.UseAuthorization();
 
 
-
 app.MapControllers();
-
 
 
 app.Run();

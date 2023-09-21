@@ -9,12 +9,12 @@ namespace LaBook_Planet.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IUploadService _uploadService;
+        private readonly IImageService _imageService;
 
-        public HomeController(ILogger<HomeController> logger, IUploadService upload)
+        public HomeController(ILogger<HomeController> logger, IImageService image)
         {
             _logger = logger;
-            _uploadService = upload;
+            _imageService = image;
         }
 
 
@@ -45,7 +45,7 @@ namespace LaBook_Planet.Controllers
         [HttpPost]
         public async Task<IActionResult> UploadImage(UploadImageViewModel model)
         {
-            var result = await _uploadService.UploadImage(model.Photo, model.Foldername);
+            var result = await _imageService.UploadImage(model.Image, model.Foldername);
             if(result.ContainsKey("Code") && result["Code"].Equals("200"))
             {
                 ViewBag.Success = $"PublicId: {result["PublicId"]}, Url: {result["Url"]}";

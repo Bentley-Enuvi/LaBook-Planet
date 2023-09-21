@@ -13,13 +13,13 @@
             }
             @if (!string.IsNullOrEmpty(successMsg))
             {
-                @errMsg
+                @successMsg
                 ;
             }
         </div>
 
         <div class="input-control">
-            <input asp-for="Photo" />
+            <input asp-for="Image" />
         </div>
         <div class="input-control">
             <input asp-for="Foldername" />

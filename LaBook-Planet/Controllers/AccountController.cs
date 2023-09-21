@@ -33,17 +33,32 @@ namespace LaBook_Planet.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var result =  await _accountService.RegisterAsync(model);
-                if(result.Succeeded)
-                    return RedirectToAction("Index", "Home");
-                foreach(var item in result.Errors)
+                var user = new AppUser
                 {
-                    ModelState.AddModelError(item.Code, item.Description);
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                };
+
+                var result =  await _userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    //return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Account");
                 }
+
+                ViewBag.Err("Registration failed\", \"Invalid credentials");
+
+                //foreach(var item in result.Errors)
+                //{
+                //    ModelState.AddModelError(item.Code, item.Description);
+                //}
             }
           
             return View(model); 
@@ -105,12 +120,6 @@ namespace LaBook_Planet.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult ResetPassword()
-        {
-            return View();
-        }
-
 
 
         [HttpGet]
@@ -149,5 +158,59 @@ namespace LaBook_Planet.Controllers
             }
             return View(model);
         }
+
+
+
+        [HttpGet]
+        public IActionResult ResetPassword(string Email, string token)
+        {
+            var viewModel = new ResetPasswordViewModel();
+            if (string.IsNullOrEmpty(token))
+            {
+                ViewBag.ErrToken = "Token is required";
+            }
+
+
+            if (string.IsNullOrEmpty(Email))
+            {
+                ViewBag.ErrEmail = "Email is required";
+            }
+
+            viewModel.Token = token;
+            viewModel.Email = Email;
+
+            return View(viewModel);
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+                    var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
+
+                    foreach (var err in result.Errors)
+                    {
+                        ModelState.AddModelError(err.Code, err.Description);
+                    }
+                }
+                ViewBag.ErrEmail = "Email is invalid";
+            }
+
+
+
+            return View(model);
+        }
     }
+    
 }
